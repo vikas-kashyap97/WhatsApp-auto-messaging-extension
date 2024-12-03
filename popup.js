@@ -11,11 +11,10 @@ document.getElementById('sendButton').addEventListener('click', () => {
 
   const sendMessage = () => {
     const formattedMessage = encodeURIComponent(`*${senderName}*\n${message}`);
-    const whatsappUrl = navigator.userAgent.includes("Mobile")
-      ? `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${formattedMessage}`
-      : `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${formattedMessage}`;
-    
-    chrome.tabs.create({ url: whatsappUrl });
+    const whatsappDesktopUrl = `whatsapp://send?phone=${phoneNumber}&text=${formattedMessage}`;
+
+    // Open WhatsApp Desktop App
+    window.location.href = whatsappDesktopUrl;
   };
 
   if (scheduleTime) {
