@@ -4,20 +4,56 @@
   <title>WhatsApp Auto Sender with Scheduler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="popup.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
   <div class="container">
-    <h3>WhatsApp Auto Sender with Scheduler</h3>
-    <label for="senderName">Your Name:</label>
-    <input type="text" id="senderName" placeholder="Enter your name" required>
-    <label for="phoneNumber">Recipient's Phone Number:</label>
-    <input type="text" id="phoneNumber" placeholder="e.g., +91 1234567890" required>
-    <label for="message">Message:</label>
-    <textarea id="message" placeholder="Enter your message" required></textarea>
-    <label for="scheduleTime">Schedule Message (Optional):</label>
-    <input type="datetime-local" id="scheduleTime">
-    <button id="sendButton">Send Message</button>
-    <div class="loading" id="loading">Sending...</div>
+    <div class="nav-tabs">
+      <button class="tab-button active" data-tab="home">Home</button>
+      <button class="tab-button" data-tab="history">History</button>
+      <button class="tab-button" data-tab="user">User</button>
+    </div>
+    <div class="connection-status">
+      <span class="status-indicator"></span>
+      <span class="status-text">Not Connected</span>
+    </div>
+    <div class="tab-content" id="home">
+      <h3><i class="fas fa-pencil-alt"></i> Compose Message</h3>
+      <button id="attachmentButton"><i class="fas fa-paperclip"></i> Insert Attachment</button>
+      <input type="file" id="attachmentInput" style="display: none;" accept="image/*, video/*, application/pdf, .docx, .xlsx">
+      <div class="button-group">
+        <button id="boldButton"><i class="fas fa-bold"></i></button>
+        <button id="italicButton"><i class="fas fa-italic"></i></button>
+        <button id="emojiButton"><i class="far fa-smile"></i></button>
+      </div>
+      <label for="senderName"><i class="fas fa-user"></i> Sender Name:</label>
+      <input type="text" id="senderName" placeholder="Enter sender's name">
+      <textarea id="message" placeholder="Enter your message" required></textarea>
+      <h4><i class="fas fa-phone"></i> Phone Numbers</h4>
+      <div id="phoneNumbers">
+        <input type="text" class="phone-input" placeholder="e.g., +911234567890">
+      </div>
+      <h4><i class="fas fa-clock"></i> Schedule Message</h4>
+      <label for="scheduleDate">Select Date:</label>
+      <input type="date" id="scheduleDate">
+      <label for="scheduleTime">Select Time:</label>
+      <input type="time" id="scheduleTime">
+      <div class="action-buttons">
+        <button id="clearButton"><i class="fas fa-trash"></i> Clear</button>
+        <button id="saveDraftButton"><i class="fas fa-save"></i> Save Draft</button>
+        <button id="sendButton"><i class="fas fa-paper-plane"></i> Send Now</button>
+        <button id="scheduleButton"><i class="fas fa-calendar-check"></i> Schedule Message</button>
+        <button id="addContactButton"><i class="fas fa-user-plus"></i> Add Contact</button>
+      </div>
+    </div>
+    <div class="tab-content" id="history" style="display: none;">
+      <h3>Message History</h3>
+      <div id="messageHistory"></div>
+    </div>
+    <div class="tab-content" id="user" style="display: none;">
+      <h3>User Profile</h3>
+      <p>Logged in number: <span id="loggedInNumber"></span></p>
+    </div>
   </div>
   <script src="popup.js"></script>
 </body>
