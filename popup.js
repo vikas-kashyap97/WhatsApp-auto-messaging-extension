@@ -90,6 +90,7 @@ document.getElementById('attachmentInput').addEventListener('change', (event) =>
   }
 });
 
+
 // Schedule message
 function scheduleMessage() {
   const message = document.getElementById('message').value.trim();
