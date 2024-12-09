@@ -77,6 +77,7 @@ document.getElementById('attachmentButton').addEventListener('click', () => {
   document.getElementById('attachmentInput').click();
 });
 
+
 // Handle file selection
 document.getElementById('attachmentInput').addEventListener('change', (event) => {
   const file = event.target.files[0];
